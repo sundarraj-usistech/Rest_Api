@@ -1,44 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
-<body>
+<?php
 
-	<table>
-
-		<!-- <tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>URL</th>		
-		</tr> -->	
-
-		<?php //foreach ($data as $row) { ?>
-		<!-- <tr>
+			header("Content-Type: application/json; charset=UTF-8");
+			header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
+			header("Access-Control-Max-Age: 3600");
 			
-			<td><?php echo $row->id; ?></td>
-			<td><?php echo $row->title; ?></td>
-			<td><?php echo $row->description; ?></td>
-			<td><?php echo $row->image_url; ?></td>
+			$requestMethod = $_SERVER["REQUEST_METHOD"];
 
-		</tr> -->	
-			
-		<?php	//}
-		?>
-		<?php
-			header("Content-type:json");
 			foreach ($data as $row) {
 				 
 				echo json_encode($row, JSON_PRETTY_PRINT);
-				echo "<br>";
+				
 
 			} 
-		?>
-	</table>
 
-
-</body>
-</html>
+?>
+	

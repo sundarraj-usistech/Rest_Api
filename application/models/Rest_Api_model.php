@@ -11,7 +11,7 @@
 		public function fetch_All(){
 
 			$this->db->select('*');
-			$this->db->from('image_slider');
+			$this->db->from('student_details');
 			$query=$this->db->get();
 			return $query->result();
 
