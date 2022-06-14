@@ -1,17 +1,30 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
 
-			header("Content-Type: application/json; charset=UTF-8");
-			header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
-			header("Access-Control-Max-Age: 3600");
+	<?php
+			echo $request_method;
+			echo "<br>";
+			echo $url;
+			echo "<br>";
+			echo $hostname;
+			echo "<br>";
+			echo $username;
+			echo "<br>";
+			echo $status;
+			echo "<br>";
+			echo $json;
 			
-			$requestMethod = $_SERVER["REQUEST_METHOD"];
 
-			foreach ($data as $row) {
-				 
-				echo json_encode($row, JSON_PRETTY_PRINT);
-				
+	?>
 
-			} 
+</body>
+</html>
 
-?>
+
 	
