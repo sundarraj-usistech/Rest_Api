@@ -10,7 +10,7 @@ class Rest_Api_controller extends CI_Controller{
 		header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
 		header("Access-Control-Max-Age: 3600");
 
-		$this->load->library('session');
+		$this->load->library('form_validation');
 		$this->load->model('Student_Model');
 
 	}
@@ -31,19 +31,22 @@ class Rest_Api_controller extends CI_Controller{
 
 		$response=$this->index();
 
-		$data=json_encode($this->input->post(), JSON_PRETTY_PRINT);
+		$this->form_validation->set_rules("name","Name","required");
+		$this->form_validation->set_rules("class", "Class", "required");
+		
+		$data=json_encode($this->input->post());
 
-		if($response['status']==200 && $response['request_method']=='POST'){
+		if($response['status']==200 && $response['request_method']=="POST"){
 
-			$result=json_decode($data);
+			if($this->Student_Model->insert($data)){
+
+				echo "Success";
+
+			}
 
 		}
 
-		if($this->Student_Model->insert($result)){
-
-			$this->load->view('Add_Student_View');
-
-		}
+		
 
 	}
 

@@ -8,9 +8,11 @@
 
 		}
 
-		public function insert($result){
+		public function insert($data){			
 
-			if ($this->db->insert("api_data",$result)) {
+			$result=json_decode($data);
+
+			if ($this->db->insert("api_data", $result)) {
 
 				return TRUE;
 
