@@ -34,19 +34,21 @@ class Rest_Api_controller extends CI_Controller{
 		$this->form_validation->set_rules("name","Name","required");
 		$this->form_validation->set_rules("class", "Class", "required");
 		
-		$data=json_encode($this->input->post());
+		if($this->form_validation->run()){
 
-		if($response['status']==200 && $response['request_method']=="POST"){
+			$data=json_encode($this->input->post());
 
-			if($this->Student_Model->insert($data)){
+			if($response['status']==200 && $response['request_method']=="POST"){
 
-				echo "Success";
+				if($this->Student_Model->insert($data)){
+
+					echo "Success";
+
+				}
 
 			}
-
+			
 		}
-
-		
 
 	}
 
