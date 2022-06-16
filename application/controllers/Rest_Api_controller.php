@@ -1,6 +1,6 @@
 <?php
 
-class Rest_Api_controller extends CI_Controller{
+class Rest_Api_Controller extends CI_Controller{
 
 	public function __construct(){
 
@@ -31,10 +31,10 @@ class Rest_Api_controller extends CI_Controller{
 
 		$response=$this->index();
 
-		$this->form_validation->set_rules("name","Name","required");
-		$this->form_validation->set_rules("class", "Class", "required");
+		$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[api_data.name]');
+		$this->form_validation->set_rules('class','Class','required|min_length[3]|max_length[5]|trim');
 		
-		if($this->form_validation->run()){
+		if($this->form_validation->run() == TRUE){
 
 			$data=json_encode($this->input->post());
 
@@ -49,27 +49,11 @@ class Rest_Api_controller extends CI_Controller{
 			}
 			
 		}
+		else{
 
-	}
+			$this->load->view('Add_Student_View');
 
-	public function curl_demo(){
-
-		// From URL to get webpage contents.
-		// $url = "https://www.geeksforgeeks.org/";
-			$url=base_url();
-
-		// Initialize a CURL session.
-		$ch = curl_init();
-
-		// Return Page contents.
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-		//grab URL and pass it to the variable.
-		curl_setopt($ch, CURLOPT_URL, $url);
-
-		$result = curl_exec($ch);
-
-		echo $result;
+		}
 
 	}
 

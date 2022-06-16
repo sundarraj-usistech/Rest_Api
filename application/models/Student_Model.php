@@ -8,6 +8,14 @@
 
 		}
 
+		public function display_All(){
+
+			$this->db->order_by('id','ASC');
+			$query=$this->db->get('api_data');
+			return $query->result();
+
+		}
+
 		public function insert($data){			
 
 			$result=json_decode($data);

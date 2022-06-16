@@ -3,33 +3,43 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Add Student</title>
 </head>
 <body>
 
+
+	<?php 
+			if(!empty(validation_errors())){
+
+				echo validation_errors();
+				die;
+			}
+
+	 ?>
+
 	<div class="container mt-5" align="center">
 		
-		<form method="post" action="<?php base_url(); ?>Rest_Api_Controller/insert">
+		<form method="post" action="<?php base_url(); ?>Student_Controller/insert">
 			
 			<table>
 				
 				<tr>
 					
 					<td><label>Name</label></td>
-					<td><input type="text" name="name" class="form-control"></td>
+					<td><input type="text" name="name" class="form-control" value="<?php echo set_value('name'); ?>"></td>
 
 				</tr>
 				<tr>
 					
 					<td><label>Class</label></td>
-					<td><input type="text" name="class"></td>
+					<td><input type="text" name="class" value="<?php echo set_value('class'); ?>"></td>
 
 				</tr>
 
 			</table>
 
 			<span align="center">
-				
+		
 				<input type="submit" value="SUBMIT" class="btn" id="add_student">
 
 			</span>
@@ -57,7 +67,7 @@
 					jQuery.ajax({
 
 						type:"POST",
-						url:"<?php base_url(); ?>Rest_Api_Controller/insert",
+						url:"<?php base_url(); ?>Student_Controller/insert",
 						dataType:'html',
 						data:{name: name, class: Class},
 						success: function(res){
