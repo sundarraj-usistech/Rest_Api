@@ -9,17 +9,18 @@
 
 
 	<?php 
-			if(!empty(validation_errors())){
+			if(validation_errors()){
 
 				echo validation_errors();
 				die;
+
 			}
 
 	 ?>
 
 	<div class="container mt-5" align="center">
 		
-		<form method="post" action="<?php base_url(); ?>Student_Controller/insert">
+		<form method="post" action="<?php base_url(); ?>Rest_Api_Controller/insert">
 			
 			<table>
 				
@@ -48,7 +49,7 @@
 
 	</div>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 
 		$(document).ready(function(){
 
@@ -67,7 +68,7 @@
 					jQuery.ajax({
 
 						type:"POST",
-						url:"<?php base_url(); ?>Student_Controller/insert",
+						url:"<?php //base_url(); ?>Student_Controller/insert",
 						dataType:'html',
 						data:{name: name, class: Class},
 						success: function(res){
@@ -98,7 +99,7 @@
 
 		});
 
-	</script>
+	</script> -->
 	
 </body>
 </html>

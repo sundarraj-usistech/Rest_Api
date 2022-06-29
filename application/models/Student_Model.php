@@ -8,7 +8,7 @@
 
 		}
 
-		public function display_All(){
+		public function display_all(){
 
 			$this->db->order_by('id','ASC');
 			$query=$this->db->get('api_data');
