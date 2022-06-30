@@ -27,13 +27,13 @@
 				<tr>
 					
 					<td><label>Name</label></td>
-					<td><input type="text" name="name" class="form-control" value="<?php echo set_value('name'); ?>"></td>
+					<td><input type="text" name="name" class="form-control"></td>
 
 				</tr>
 				<tr>
 					
 					<td><label>Class</label></td>
-					<td><input type="text" name="class" value="<?php echo set_value('class'); ?>"></td>
+					<td><input type="text" name="class" class="form-control"></td>
 
 				</tr>
 
@@ -48,6 +48,8 @@
 		</form>	
 
 	</div>
+
+	<?php ?>
 
 	<!-- <script type="text/javascript">
 

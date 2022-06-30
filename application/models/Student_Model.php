@@ -16,11 +16,20 @@
 
 		}
 
+		public function insert_api_data($data){
+
+			$result=json_decode($data);print_r($result);exit;
+			// $insert_data=array(
+			// 	name => $result[name],
+			// 	class => $result[class]
+			// );
+			$this->db->insert($result);
+
+		}
+
 		public function insert($data){			
 
-			$result=json_decode($data);
-
-			if ($this->db->insert("api_data", $result)) {
+			if ($this->db->insert("api_data")) {
 
 				return TRUE;
 

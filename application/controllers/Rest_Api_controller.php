@@ -27,6 +27,12 @@ class Rest_Api_Controller extends CI_Controller{
 		
 	}
 
+	public function insert_View(){
+
+		$this->load->view('Add_Student_View');
+
+	}
+
 	public function insert(){
 
 		$response=$this->index();
@@ -39,19 +45,14 @@ class Rest_Api_Controller extends CI_Controller{
 			if($this->form_validation->run() == TRUE){
 
 				$data=json_encode($this->input->post());
-
-					if($this->Student_Model->insert($data)){
-
-						echo "Success";
-
-					}
+				print_r($data);exit;
+				$this->Student_Model->insert_api_data($data);
 
 			}
 			
 		}
 
 	}
-?>
 // 	public function display_all(){
 
 // 		$result['data']=$this->Student_Model->display_all();
@@ -63,5 +64,5 @@ class Rest_Api_Controller extends CI_Controller{
 // 		}
 
 // 	}
-
-// }
+}
+?>
