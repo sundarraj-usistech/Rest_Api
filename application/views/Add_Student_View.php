@@ -20,20 +20,20 @@
 
 	<div class="container mt-5" align="center">
 		
-		<form method="post" action="<?php base_url(); ?>Rest_Api_Controller/insert">
+		<form method="post" action="<?= base_url(); ?>Student_Controller/insert">
 			
 			<table>
 				
 				<tr>
 					
 					<td><label>Name</label></td>
-					<td><input type="text" name="name" class="form-control"></td>
+					<td><input type="text" name="name" class="form-control" value="<?php echo set_value('name') ?>"></td>
 
 				</tr>
 				<tr>
 					
 					<td><label>Class</label></td>
-					<td><input type="text" name="class" class="form-control"></td>
+					<td><input type="text" name="class" class="form-control" value="<?php echo set_value('class') ?>"></td>
 
 				</tr>
 
@@ -41,7 +41,7 @@
 
 			<span align="center">
 		
-				<input type="submit" value="SUBMIT" class="btn" id="add_student">
+				<button type="submit" class="btn" id="add_student">SUBMIT</button>
 
 			</span>
 

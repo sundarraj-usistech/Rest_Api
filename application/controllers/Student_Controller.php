@@ -29,6 +29,12 @@
 
 		}
 
+		public function insert_View(){
+
+			$this->load->view('Add_Student_View');
+
+		}
+
 		public function insert(){
 
 			$api_url=base_url()."Rest_Api_Controller/insert";

@@ -17,13 +17,13 @@ class Rest_Api_Controller extends CI_Controller{
 
 	public function index(){
 
-		$response['request_method']=$_SERVER["REQUEST_METHOD"];
-		$response['url']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		$response['hostname']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST);
-		$response['username']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_USER);
-		$response['status']=http_response_code();
+		$request['request_method']=$_SERVER["REQUEST_METHOD"];
+		$request['url']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+		$request['hostname']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST);
+		$request['username']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_USER);
+		$request['status']=http_response_code();
 
-		return $response;
+		return $request;
 		
 	}
 
@@ -35,9 +35,9 @@ class Rest_Api_Controller extends CI_Controller{
 
 	public function insert(){
 
-		$response=$this->index();
+		$request=$this->index();
 
-		if($response['status']==200 && $response['request_method']=="POST"){
+		if($request['status']==200 && $request['request_method']=="POST"){
 
 			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[api_data.name]');
 			$this->form_validation->set_rules('class','Class','trim|required|min_length[3]|max_length[5]');
@@ -45,8 +45,12 @@ class Rest_Api_Controller extends CI_Controller{
 			if($this->form_validation->run() == TRUE){
 
 				$data=json_encode($this->input->post());
-				print_r($data);exit;
-				$this->Student_Model->insert_api_data($data);
+				$this->Student_Model->insert($data);
+
+			}
+			else{
+
+				$this->load->view('Add_Student_View',validation_errors());
 
 			}
 			
