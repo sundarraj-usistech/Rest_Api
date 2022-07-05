@@ -16,9 +16,11 @@
 
 		}
 
-		public function insert($data){			
+		public function insert($data){
+
+			$insert_data=json_decode($data);			
 			
-			if ($this->db->insert("api_data",$data)) {
+			if ($this->db->insert("api_data",$insert_data)) {
 
 				return TRUE;
 
