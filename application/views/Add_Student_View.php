@@ -12,8 +12,14 @@
 			if(validation_errors()){
 
 				echo validation_errors();
-				die;
+			 
+				?>
 
+				<a href="javascript:window.history.go(-1)"><input type="submit" class="btn" value="BACK"></a>
+
+	<?php	
+				die;
+			
 			}
 
 	 ?>

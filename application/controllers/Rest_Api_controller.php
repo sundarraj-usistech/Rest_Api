@@ -7,7 +7,7 @@ class Rest_Api_Controller extends CI_Controller{
 		parent::__construct();
 
 		header("Content-Type: json");
-		header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
+		header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE");
 		header("Access-Control-Max-Age: 3600");
 
 		$this->load->library('form_validation');
@@ -27,9 +27,32 @@ class Rest_Api_Controller extends CI_Controller{
 		
 	}
 
-	public function insert_View(){
+	public function display_all(){
 
-		$this->load->view('Add_Student_View');
+		$request=$this->index();
+
+		if($request['status']==200 && $request['request_method']=='POST'){
+
+			$result['data']=$this->Student_Model->display_all();
+
+			if($result){
+				
+				$query=$this->load->view('Student_View',$result);
+
+				if($query){
+
+					log_message('debug', 'Data displayed Successfully');
+
+				}
+				else{
+
+					log_message('error', 'Data cannot be displayed');
+
+				}
+
+			}
+
+		}
 
 	}
 
@@ -37,7 +60,7 @@ class Rest_Api_Controller extends CI_Controller{
 
 		$request=$this->index();
 
-		if($request['status']==200 && $request['request_method']=="POST"){
+		if($request['status']==200 && $request['request_method']=='POST'){
 
 			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[api_data.name]');
 			$this->form_validation->set_rules('class','Class','trim|required|min_length[3]|max_length[5]');
@@ -49,12 +72,14 @@ class Rest_Api_Controller extends CI_Controller{
 
 				if($query){
 
-					$this->load->Student_Controller;
-					
+					log_message('debug', 'Inserted Data Successfully');
+
 				}
 
 			}
 			else{
+
+				log_message('error', 'Insertion Error - '.strip_tags(trim(validation_errors())));
 
 				$this->load->view('Add_Student_View',validation_errors());
 
@@ -63,16 +88,7 @@ class Rest_Api_Controller extends CI_Controller{
 		}
 
 	}
-	public function display_all(){
 
-		$result['data']=$this->Student_Model->display_all();
-
-		if($result){
-			
-			$this->load->view('Student_View',$result);
-
-		}
-
-	}
 }
+
 ?>
