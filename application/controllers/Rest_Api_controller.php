@@ -72,7 +72,7 @@ class Rest_Api_Controller extends CI_Controller{
 
 				if($query){
 
-					log_message('debug', 'Inserted Data Successfully');
+					log_message('debug', 'Data Inserted Successfully');
 
 				}
 
