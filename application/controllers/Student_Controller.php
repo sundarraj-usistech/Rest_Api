@@ -8,6 +8,7 @@
 			$this->load->model('Student_Model');
 
 		}
+		
 		public function index(){
 
 			$this->display_all();

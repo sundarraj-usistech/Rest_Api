@@ -1,5 +1,12 @@
 <?php
 
+// if(!isset($_SERVER['HTTP_REFERER'])){
+
+// 	log_message('error','Direct URL access');
+//     die();
+
+// }
+
 class Rest_Api_Controller extends CI_Controller{
 
 	public function __construct(){

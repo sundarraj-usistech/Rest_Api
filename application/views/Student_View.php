@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/style.css">
 
 	<div class="container">
 		
