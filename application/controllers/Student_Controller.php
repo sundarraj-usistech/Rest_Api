@@ -37,6 +37,7 @@
 		public function insert_View(){
 
 			$this->load->view('Add_Student_View');
+			
 			log_message('debug', 'This Page is used to Insert New Data');
 
 		}
