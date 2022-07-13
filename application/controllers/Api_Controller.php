@@ -19,6 +19,7 @@ class Api_Controller extends CI_Controller{
 
 		$this->load->library('form_validation');
 		$this->load->model('Student_Model');
+		date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
 
 	}
 
@@ -34,13 +35,13 @@ class Api_Controller extends CI_Controller{
 		
 	}
 
-	public function display_all(){
+	public function display(){
 
 		$request=$this->index();
 
 		if($request['status']==200 && $request['request_method']=='POST'){
 
-			$result['data']=$this->Student_Model->display_all();
+			$result['data']=$this->Student_Model->display();
 
 			if($result){
 				

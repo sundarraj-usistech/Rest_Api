@@ -11,14 +11,14 @@
 		
 		public function index(){
 
-			$this->display_all();
+			$this->display();
 
 		}
 
-		public function display_all(){
+		public function display(){
 
-			$api_url=base_url()."Api_Controller/display_all"; 
-			$data=$this->Student_Model->display_all();
+			$api_url=base_url()."Api_Controller/display"; 
+			$data=$this->Student_Model->display();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);
 			curl_setopt($client, CURLOPT_POST, true);
