@@ -17,7 +17,7 @@
 
 		public function display_all(){
 
-			$api_url=base_url()."Rest_Api_Controller/display_all"; 
+			$api_url=base_url()."Api_Controller/display_all"; 
 			$data=$this->Student_Model->display_all();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);
@@ -45,7 +45,7 @@
 
 		public function insert(){
 
-			$api_url=base_url()."Rest_Api_Controller/insert";
+			$api_url=base_url()."Api_Controller/insert";
 			$data=$this->input->post();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);

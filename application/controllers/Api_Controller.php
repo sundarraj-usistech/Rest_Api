@@ -3,13 +3,11 @@
 // if(!isset($_SERVER['HTTP_REFERER'])){
 
 // 	log_message('error','Direct URL access');
-//     die();
+//  die();
 
 // }
-'<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">';
 
-
-class Rest_Api_Controller extends CI_Controller{
+class Api_Controller extends CI_Controller{
 
 	public function __construct(){
 
@@ -46,7 +44,7 @@ class Rest_Api_Controller extends CI_Controller{
 
 			if($result){
 				
-				$query=$this->load->view('Student_View',$result);
+				$query=$this->load->view('Students_Detail_View',$result);
 
 				if($query){ 
 
@@ -56,6 +54,7 @@ class Rest_Api_Controller extends CI_Controller{
 				else{
 
 					log_message('error', strip_tags(trim('Data cannot be displayed')));
+					die;
 
 				}
 
@@ -81,7 +80,7 @@ class Rest_Api_Controller extends CI_Controller{
 
 				if($query){
 
-					log_message('debug', 'Data Inserted Successfully');
+					log_message('debug', strip_tags(trim('Data Inserted Successfully')));
 
 				}
 
