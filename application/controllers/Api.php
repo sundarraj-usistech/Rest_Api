@@ -1,108 +1,103 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Api extends CI_Controller {
+// if(!isset($_SERVER['HTTP_REFERER'])){
 
- public function __construct()
- {
-  parent::__construct();
-  $this->load->model('api_model');
-  $this->load->library('form_validation');
- }
+// 	log_message('error','Direct URL access');
+//     die();
 
- function index()
- {
-  $data = $this->api_model->fetch_all();
-  echo json_encode($data->result_array());
- }
- 
- function insert()
- {
-  $this->form_validation->set_rules("first_name", "First Name", "required");
-  $this->form_validation->set_rules("last_name", "Last Name", "required");
-  $array = array();
-  if($this->form_validation->run())
-  {
-   $data = array(
-    'first_name' => trim($this->input->post('first_name')),
-    'last_name'  => trim($this->input->post('last_name'))
-   );
-   $this->api_model->insert_api($data);
-   $array = array(
-    'success'  => true
-   );
-  }
-  else
-  {
-   $array = array(
-    'error'    => true,
-    'first_name_error' => form_error('first_name'),
-    'last_name_error' => form_error('last_name')
-   );
-  }
-  echo json_encode($array, true);
- }
+// }
+'<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">';
 
- function fetch_single()
- {
-  if($this->input->post('id'))
-  {
-   $data = $this->api_model->fetch_single_user($this->input->post('id'));
-   foreach($data as $row)
-   {
-    $output['first_name'] = $row["first_name"];
-    $output['last_name'] = $row["last_name"];
-   }
-   echo json_encode($output);
-  }
- }
 
- function update()
- {
-  $this->form_validation->set_rules("first_name", "First Name", "required");
-  $this->form_validation->set_rules("last_name", "Last Name", "required");
-  $array = array();
-  if($this->form_validation->run())
-  {
-   $data = array(
-    'first_name' => trim($this->input->post('first_name')),
-    'last_name'  => trim($this->input->post('last_name'))
-   );
-   $this->api_model->update_api($this->input->post('id'), $data);
-   $array = array(
-    'success'  => true
-   );
-  }
-  else
-  {
-   $array = array(
-    'error'    => true,
-    'first_name_error' => form_error('first_name'),
-    'last_name_error' => form_error('last_name')
-   );
-  }
-  echo json_encode($array, true);
- }
+class Rest_Api_Controller extends CI_Controller{
 
- function delete()
- {
-  if($this->input->post('id'))
-  {
-   if($this->api_model->delete_single_user($this->input->post('id')))
-   {
-    $array = array(
-     'success' => true
-    );
-   }
-   else
-   {
-    $array = array(
-     'error' => true
-    );
-   }
-   echo json_encode($array);
-  }
- }
- 
+	public function __construct(){
+
+		parent::__construct();
+
+		header("Content-Type: json");
+		header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE");
+		header("Access-Control-Max-Age: 3600");
+
+		$this->load->library('form_validation');
+		$this->load->model('Student_Model');
+
+	}
+
+	public function index(){
+
+		$request['request_method']=$_SERVER["REQUEST_METHOD"];
+		$request['url']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+		$request['hostname']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST);
+		$request['username']=parse_url($_SERVER['REQUEST_URI'], PHP_URL_USER);
+		$request['status']=http_response_code();
+
+		return $request;
+		
+	}
+
+	public function display_all(){
+
+		$request=$this->index();
+
+		if($request['status']==200 && $request['request_method']=='POST'){
+
+			$result['data']=$this->Student_Model->display_all();
+
+			if($result){
+				
+				$query=$this->load->view('Student_View',$result);
+
+				if($query){ 
+
+					log_message('debug', strip_tags(trim('Data displayed Successfully')));
+
+				}
+				else{
+
+					log_message('error', strip_tags(trim('Data cannot be displayed')));
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public function insert(){
+
+		$request=$this->index();
+
+		if($request['status']==200 && $request['request_method']=='POST'){
+
+			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[api_data.name]');
+			$this->form_validation->set_rules('class','Class','trim|required|min_length[3]|max_length[5]');
+			
+			if($this->form_validation->run() == TRUE){
+
+				$data=json_encode($this->input->post());
+				$query=$this->Student_Model->insert($data);
+
+				if($query){
+
+					log_message('debug', 'Data Inserted Successfully');
+
+				}
+
+			}
+			else{
+
+				log_message('error', 'Insertion Error - '.strip_tags(trim(validation_errors())));
+
+				$this->load->view('Add_Student_View',validation_errors());
+
+			}
+			
+		}
+
+	}
+
 }
+
 ?>
