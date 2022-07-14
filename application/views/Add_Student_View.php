@@ -7,7 +7,6 @@
 </head>
 <body>
 
-
 	<?php 
 			if(validation_errors()){
 
@@ -24,7 +23,7 @@
 
 	 ?>
 
-	<div class="container mt-5" align="center">
+	<div class="container" align="center">
 		
 		<form method="post" action="<?= base_url(); ?>Student_Controller/insert">
 			

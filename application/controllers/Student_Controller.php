@@ -6,12 +6,22 @@
 
 			parent::__construct();
 			$this->load->model('Student_Model');
+			$this->load->view('header');
+			$this->load->view('footer');
 
 		}
 		
 		public function index(){
 
-			$this->display();
+			$this->Login_View();
+
+		}
+
+		public function Login_View(){
+
+			$this->load->view('Login_View');
+
+			log_message('debug', 'This Page is used to Login');
 
 		}
 
@@ -35,7 +45,7 @@
 
 		}
 
-		public function insert_View(){
+		public function Add_Student_View(){
 
 			$this->load->view('Add_Student_View');
 			
