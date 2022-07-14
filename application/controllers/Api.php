@@ -7,7 +7,7 @@
 
 // }
 
-class Api_Controller extends CI_Controller{
+class Api extends CI_Controller{
 
 	public function __construct(){
 
@@ -20,6 +20,9 @@ class Api_Controller extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->load->model('Student_Model');
 		date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+
+		$this->load->view('header');
+		$this->load->view('footer');
 
 	}
 

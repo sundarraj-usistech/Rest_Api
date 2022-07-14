@@ -23,9 +23,9 @@
 
 	 ?>
 
-	<div class="container" align="center">
+	<div class="container mt-5 text-center">
 		
-		<form method="post" action="<?= base_url(); ?>Student_Controller/insert">
+		<form method="post" action="<?= base_url(); ?>Student/insert" class="form-control">
 			
 			<table>
 				
@@ -44,9 +44,9 @@
 
 			</table>
 
-			<span align="center">
+			<span class="add">
 		
-				<button type="submit" class="btn" id="add_student">SUBMIT</button>
+				<input type="submit" class="btn btn-success" value="ADD">
 
 			</span>
 

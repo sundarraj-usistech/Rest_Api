@@ -1,7 +1,31 @@
-	
-	table,th,td{
 
-		border: 1px solid black;
+	td{
+
+		text-align: center;
+
+	}
+
+	th{
+
+		text-align: center !important;
+
+	}
+
+	table{
+
+		margin: 0 auto;
+
+	}
+
+	.login{
+
+		padding: 10px 0 0 70px;
+
+	}
+
+	.add{
+
+		padding: 10px 0 0 40px;
 
 	}
 

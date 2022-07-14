@@ -1,6 +1,6 @@
 <?php
 
-	class Student_Controller extends CI_Controller{
+	class Student extends CI_Controller{
 
 		public function __construct(){
 
@@ -8,6 +8,8 @@
 			$this->load->model('Student_Model');
 			$this->load->view('header');
 			$this->load->view('footer');
+
+			date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
 
 		}
 		
@@ -27,7 +29,7 @@
 
 		public function display(){
 
-			$api_url=base_url()."Api_Controller/display"; 
+			$api_url=base_url()."Api/display"; 
 			$data=$this->Student_Model->display();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);
@@ -55,7 +57,7 @@
 
 		public function insert(){
 
-			$api_url=base_url()."Api_Controller/insert";
+			$api_url=base_url()."Api/insert";
 			$data=$this->input->post();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);

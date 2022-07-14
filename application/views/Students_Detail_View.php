@@ -7,9 +7,9 @@
 </head>
 <body>
 
-	<div class="container">
+	<div class="container mt-5">
 		
-		<table>
+		<table class="table table-striped">
 			
 			<tr>
 					

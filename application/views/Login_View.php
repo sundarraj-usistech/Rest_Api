@@ -9,31 +9,31 @@
 
 <body>
 
-	<div class="container mt-5" align="center">
+	<div class="container mt-5 text-center">
 		
-		<form>
+		<form class="form-control">
 	
 			<table>
 				
 				<tr>
 
 					<td><label>Username</label></td>
-					<td><input type="text" name="password"></td>
+					<td><input type="text" name="password" class="form-control"></td>
 
 				</tr>
 
 				<tr>
 
 					<td><label>Password</label></td>
-					<td><input type="text" name="password"></td>
+					<td><input type="text" name="password" class="form-control"></td>
 
 				</tr>
 
 			</table>
 
-			<span align="center">
+			<span class="login">
 				
-				<input type="button" value="Login">
+				<input type="button" value="Login" class="btn btn-primary">
 
 			</span>
 
