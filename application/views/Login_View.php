@@ -9,35 +9,39 @@
 
 <body>
 
-	<div class="container mt-5 text-center">
+	<div class="container mt-5">
 		
-		<form class="form-control">
+		<div>
+			
+			<form>
 	
-			<table>
-				
-				<tr>
+				<table>
+					
+					<tr>
 
-					<td><label>Username</label></td>
-					<td><input type="text" name="password" class="form-control"></td>
+						<td><label>Username</label></td>
+						<td><input type="text" name="password" class="form-control"></td>
 
-				</tr>
+					</tr>
 
-				<tr>
+					<tr>
 
-					<td><label>Password</label></td>
-					<td><input type="text" name="password" class="form-control"></td>
+						<td><label>Password</label></td>
+						<td><input type="text" name="password" class="form-control"></td>
 
-				</tr>
+					</tr>
 
-			</table>
+				</table>
 
-			<span class="login">
-				
-				<input type="button" value="Login" class="btn btn-primary">
+				<span class="login">
+					
+					<input type="button" value="Login" class="btn btn-primary">
 
-			</span>
+				</span>
 
-		</form>	
+			</form>	
+
+		</div>
 
 	</div>
 

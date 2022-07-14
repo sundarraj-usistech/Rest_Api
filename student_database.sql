@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_data`
+-- Table structure for table `students_detail`
 --
 
-CREATE TABLE `api_data` (
+CREATE TABLE `students_detail` (
   `id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `class` varchar(10) NOT NULL
@@ -38,9 +38,9 @@ CREATE TABLE `api_data` (
 --
 
 --
--- Indexes for table `api_data`
+-- Indexes for table `students_detail`
 --
-ALTER TABLE `api_data`
+ALTER TABLE `students_detail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -48,9 +48,9 @@ ALTER TABLE `api_data`
 --
 
 --
--- AUTO_INCREMENT for table `api_data`
+-- AUTO_INCREMENT for table `students_detail`
 --
-ALTER TABLE `api_data`
+ALTER TABLE `students_detail`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

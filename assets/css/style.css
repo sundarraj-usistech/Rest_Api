@@ -1,31 +1,12 @@
 
-	td{
+	table{
 
 		text-align: center;
 
 	}
 
-	th{
+	.container{
 
-		text-align: center !important;
-
-	}
-
-	table{
-
-		margin: 0 auto;
+		width: 70% !important;
 
 	}
-
-	.login{
-
-		padding: 10px 0 0 70px;
-
-	}
-
-	.add{
-
-		padding: 10px 0 0 40px;
-
-	}
-

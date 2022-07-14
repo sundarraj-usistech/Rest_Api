@@ -7,25 +7,27 @@
 </head>
 <body>
 
-	<?php 
-			if(validation_errors()){
+	<div class="container mt-5">
+	
+		<?php 
+		
+			if(validation_errors()){ ?>
 
-				echo validation_errors();
-			 
-				?>
+				<div class="alert alert-warning alert-dismissible fade show" role="alert" id="warning-alert">
 
-				<a href="javascript:window.history.go(-1)"><input type="submit" class="btn" value="BACK"></a>
+  					<strong><?php echo validation_errors(); ?></strong>
+
+  					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+				</div>
 
 	<?php	
-				die;
 			
 			}
 
 	 ?>
 
-	<div class="container mt-5 text-center">
-		
-		<form method="post" action="<?= base_url(); ?>Student/insert" class="form-control">
+		<form method="post" action="<?= base_url(); ?>Student/insert">
 			
 			<table>
 				
@@ -44,7 +46,7 @@
 
 			</table>
 
-			<span class="add">
+			<span>
 		
 				<input type="submit" class="btn btn-success" value="ADD">
 
@@ -54,59 +56,16 @@
 
 	</div>
 
-	<?php ?>
+	<script src="<?php echo base_url(); ?>assets/js/jQuery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		setTimeout(function() {
 
-	<!-- <script type="text/javascript">
+		    $('#warning-alert').alert('çlose');
+		    },1000);
 
-		$(document).ready(function(){
-
-			$(#add_student).click(function(){
-
-				var name = $(#name).val();
-				var Class = $(#class).val();
-
-				if((name=="" && Class=="")||(name=="")||(Class=="")){
-
-					alert('Fill all the Fields');
-
-				}
-				else{
-
-					jQuery.ajax({
-
-						type:"POST",
-						url:"<?php //base_url(); ?>Student_Controller/insert",
-						dataType:'html',
-						data:{name: name, class: Class},
-						success: function(res){
-
-							if (res==1) {
-
-								alert('Data Saved Successfully');
-
-							}
-							else{
-
-								alert('Data not Saved');
-
-							}
-
-						},
-						error: function(){
-
-							alert('Data not Saved');
-
-						}
-
-					});
-
-				}
-
-			});
-
-		});
-
-	</script> -->
+	</script>
 	
 </body>
 </html>

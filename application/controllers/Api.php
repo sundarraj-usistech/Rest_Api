@@ -74,7 +74,7 @@ class Api extends CI_Controller{
 
 		if($request['status']==200 && $request['request_method']=='POST'){
 
-			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[api_data.name]');
+			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[students_detail.name]');
 			$this->form_validation->set_rules('class','Class','trim|required|min_length[3]|max_length[5]');
 			
 			if($this->form_validation->run() == TRUE){

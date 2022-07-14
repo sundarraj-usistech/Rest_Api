@@ -11,7 +11,7 @@
 		public function display(){
 
 			$this->db->order_by('id','ASC');
-			$query=$this->db->get('api_data');
+			$query=$this->db->get('students_detail');
 			return $query->result();
 
 		}
@@ -20,7 +20,7 @@
 
 			$insert_data=json_decode($data);			
 			
-			if ($this->db->insert("api_data",$insert_data)) {
+			if ($this->db->insert("students_detail",$insert_data)) {
 
 				return TRUE;
 
