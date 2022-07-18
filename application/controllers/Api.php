@@ -101,6 +101,29 @@ class Api extends CI_Controller{
 
 	}
 
+	public function delete(){
+
+		$request=$this->index();
+
+			$data=$this->input->get('id');echo $data;exit;
+			$query=$this->Student_Model->delete($data);
+
+			if($query){
+
+				echo "Successfull";
+				log_message('debug', strip_tags(trim('Data Deleted Successfully')));
+
+			}
+
+		else{
+
+			log_message('error', strip_tags(trim('Data cannot be deleted')));
+			die;
+
+		}
+			
+	}
+
 }
 
 ?>

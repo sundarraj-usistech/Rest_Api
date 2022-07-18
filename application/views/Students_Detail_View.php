@@ -16,6 +16,7 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>Class</th>
+				<th>Action</th>
 
 			</tr>
 
@@ -26,6 +27,7 @@
 				<td><?php echo $row->id; ?></td>
 				<td><?php echo $row->name; ?></td>
 				<td><?php echo $row->class ?></td>
+				<td><a href="<?php echo base_url(); ?>Student/delete?id=<?php echo $row->id; ?>"><button type="submit" class="btn btn-danger">DELETE</button></a></td>
 
 			</tr>
 

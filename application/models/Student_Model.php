@@ -20,7 +20,24 @@
 
 			$insert_data=json_decode($data);			
 			
-			if ($this->db->insert("students_detail",$insert_data)) {
+			if ($this->db->insert("students_detail",$data)) {
+
+				return TRUE;
+
+			}
+			else{
+
+				return FALSE;
+				
+			}
+
+		}
+
+		public function delete($data){		
+			
+			$query=$this->db->delete('students_detail' , array('id'=>$data));
+
+			if ($query) {
 
 				return TRUE;
 

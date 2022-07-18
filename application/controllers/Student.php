@@ -5,6 +5,7 @@
 		public function __construct(){
 
 			parent::__construct();
+			$this->load->database('students_database');
 			$this->load->model('Student_Model');
 			$this->load->view('header');
 			$this->load->view('footer');
@@ -60,6 +61,25 @@
 			$api_url=base_url()."Api/insert";
 			$data=$this->input->post();
 			$data=http_build_query($data);
+			$client=curl_init($api_url);
+			curl_setopt($client, CURLOPT_POST, true);
+			curl_setopt($client, CURLOPT_POSTFIELDS, $data);
+			curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+			$response=curl_exec($client);
+			echo $response;
+
+			$httpcode=curl_getinfo($client, CURLINFO_HTTP_CODE);
+			log_message('debug', 'Response Code:'.$httpcode);
+
+			curl_close($client);
+			exit;
+
+		}
+
+		public function delete(){
+
+			$api_url=base_url()."Api/delete";
+			$data=$this->input->get('id');
 			$client=curl_init($api_url);
 			curl_setopt($client, CURLOPT_POST, true);
 			curl_setopt($client, CURLOPT_POSTFIELDS, $data);
