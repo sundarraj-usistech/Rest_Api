@@ -56,7 +56,7 @@
 
 	</div>
 
-	<script src="<?php echo base_url(); ?>assets/js/jQuery.min.js"></script>
+	<!-- <script src="<?php // echo base_url(); ?>assets/js/jQuery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		
@@ -65,7 +65,7 @@
 		    $('#warning-alert').alert('çlose');
 		    },1000);
 
-	</script>
+	</script> -->
 	
 </body>
 </html>

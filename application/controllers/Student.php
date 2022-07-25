@@ -5,12 +5,11 @@
 		public function __construct(){
 
 			parent::__construct();
-			$this->load->database('students_database');
 			$this->load->model('Student_Model');
 			$this->load->view('header');
 			$this->load->view('footer');
 
-			date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+			// date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
 
 		}
 		
@@ -28,22 +27,48 @@
 
 		}
 
-		public function display(){
+		public function login(){
 
-			$api_url=base_url()."Api/display"; 
-			$data=$this->Student_Model->display();
+			$api_url=base_url()."Api/login"; 
+			$data=$this->Student_Model->post();
 			$data=http_build_query($data);
 			$client=curl_init($api_url);
 			curl_setopt($client, CURLOPT_POST, true);
 			curl_setopt($client, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
 			$response=curl_exec($client);
-			echo $response;
+			// echo $response;
 
 			$httpcode=curl_getinfo($client, CURLINFO_HTTP_CODE);
 			log_message('debug', 'Response Code:'.$httpcode);
 
 			curl_close($client);
+			exit;
+
+		}
+
+		public function display(){
+
+			$api_url=base_url()."Api/display"; 
+			$client=curl_init($api_url);
+			curl_setopt($client, CURLOPT_URL, $api_url);
+			curl_setopt($client, CURLOPT_POSTFIELDS, true);
+			curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+			$response=curl_exec($client);
+
+			$data=json_decode($response);
+			$result=array(
+				'data'=>$data->data
+			);
+
+			$this->load->view('Students_Detail_View',$result);
+
+			$httpcode=curl_getinfo($client, CURLINFO_HTTP_CODE);
+			log_message('debug', 'Data Displayed');
+			log_message('debug', 'Response Code:'.$httpcode);
+			
+			curl_close($client);			
+
 			exit;
 
 		}

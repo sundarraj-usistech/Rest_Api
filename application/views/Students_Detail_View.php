@@ -8,9 +8,9 @@
 <body>
 
 	<div class="container mt-5">
-		
-		<table class="table table-striped">
 			
+		<table class="table table-striped">
+
 			<tr>
 					
 				<th>ID</th>
@@ -18,24 +18,24 @@
 				<th>Class</th>
 				<th>Action</th>
 
-			</tr>
-
+			</tr>			
+				
 			<?php foreach($data as $row){ ?>
 
 			<tr>
-				
+
 				<td><?php echo $row->id; ?></td>
 				<td><?php echo $row->name; ?></td>
-				<td><?php echo $row->class ?></td>
+				<td><?php echo $row->class; ?></td>
 				<td><a href="<?php echo base_url(); ?>Student/delete?id=<?php echo $row->id; ?>"><button type="submit" class="btn btn-danger">DELETE</button></a></td>
 
 			</tr>
 
-		<?php } ?>
+			<?php	} ?>					
 
 		</table>
 
-	</div>
+	</div><?php exit; ?>
 
 </body>
 </html>

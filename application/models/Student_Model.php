@@ -18,9 +18,9 @@
 
 		public function insert($data){
 
-			$insert_data=json_decode($data);			
+			$insert_data=json_decode($data);
 			
-			if ($this->db->insert("students_detail",$data)) {
+			if ($this->db->insert("students_detail",$insert_data)) {
 
 				return TRUE;
 
@@ -34,8 +34,13 @@
 		}
 
 		public function delete($data){		
+
+			print_r($data);
+			print_r($this->db->get_where('students_detail', array('id' => $data))->result());exit;
+
 			
-			$query=$this->db->delete('students_detail' , array('id'=>$data));
+			print_r($this->db->delete('students_detail', array('id' => $data)));
+			exit;
 
 			if ($query) {
 

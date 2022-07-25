@@ -15,14 +15,10 @@ class Api extends CI_Controller{
 
 		header("Content-Type: json");
 		header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE");
-		header("Access-Control-Max-Age: 3600");
 
-		$this->load->library('form_validation');
 		$this->load->model('Student_Model');
-		date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
 
-		$this->load->view('header');
-		$this->load->view('footer');
+		// date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
 
 	}
 
@@ -38,29 +34,60 @@ class Api extends CI_Controller{
 		
 	}
 
+	public function login(){
+
+		$request=$this->index();
+
+		if($request['status']==200 && $request['request_method']=='POST'){
+
+			$this->form_validation->set_rules('username','Username','required|min_length[5]|max_length[30]|is_unique[users.username]');
+			$this->form_validation->set_rules('password','Password','required|min_length[8]|max_length[50]');
+			
+			if($this->form_validation->run() == TRUE){
+
+				$data=json_encode($this->input->post());
+				$query=$this->Student_Model->login($data);
+
+				if($query){
+
+					log_message('debug', strip_tags(trim('Api - Data Inserted Successfully')));
+
+				}
+
+			}
+			else{
+
+				log_message('error', 'Api - Insertion Error - '.strip_tags(trim(validation_errors())));
+
+				$this->load->view('Login_View',validation_errors());
+
+			}
+			
+		}
+
+	}
+
 	public function display(){
 
 		$request=$this->index();
 
 		if($request['status']==200 && $request['request_method']=='POST'){
 
-			$result['data']=$this->Student_Model->display();
-
-			if($result){
+			$query=$this->Student_Model->display();
 				
-				$query=$this->load->view('Students_Detail_View',$result);
+			if($query){ 
 
-				if($query){ 
+				$response['data']=$query;
+				echo json_encode($response);
+				// log_message('debug', 'Response Code:'.$httpcode);
+				// die;
+			}
+			else{
 
-					log_message('debug', strip_tags(trim('Data displayed Successfully')));
-
-				}
-				else{
-
-					log_message('error', strip_tags(trim('Data cannot be displayed')));
-					die;
-
-				}
+				$response['message']="failed";
+				$response['status']=http_response_code(404);
+				echo json_encode($response);
+				// die;
 
 			}
 
@@ -84,14 +111,14 @@ class Api extends CI_Controller{
 
 				if($query){
 
-					log_message('debug', strip_tags(trim('Data Inserted Successfully')));
+					log_message('debug', strip_tags(trim('Api - Data Inserted Successfully')));
 
 				}
 
 			}
 			else{
 
-				log_message('error', 'Insertion Error - '.strip_tags(trim(validation_errors())));
+				log_message('error', 'Api - Insertion Error - '.strip_tags(trim(validation_errors())));
 
 				$this->load->view('Add_Student_View',validation_errors());
 
@@ -105,19 +132,22 @@ class Api extends CI_Controller{
 
 		$request=$this->index();
 
-			$data=$this->input->get('id');echo $data;exit;
+		if($request['status']==200){
+
+			$data=$_REQUEST['id'];echo $data;exit;
 			$query=$this->Student_Model->delete($data);
 
 			if($query){
 
 				echo "Successfull";
-				log_message('debug', strip_tags(trim('Data Deleted Successfully')));
+				log_message('debug', strip_tags(trim('Api - Data Deleted Successfully')));
 
 			}
 
+		}
 		else{
 
-			log_message('error', strip_tags(trim('Data cannot be deleted')));
+			log_message('error', strip_tags(trim('Api - Data cannot be deleted')));
 			die;
 
 		}

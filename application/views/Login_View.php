@@ -10,17 +10,34 @@
 <body>
 
 	<div class="container mt-5">
+		<?php 
+		
+			if(validation_errors()){ ?>
+
+				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="warning-alert">
+
+  					<strong><?php echo validation_errors(); ?></strong>
+
+  					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+				</div>
+
+	<?php	
+			
+			}
+
+	 ?>
 		
 		<div>
 			
-			<form>
+			<form method="post" action="<?php echo base_url(); ?>Student/login">
 	
 				<table>
 					
 					<tr>
 
 						<td><label>Username</label></td>
-						<td><input type="text" name="password" class="form-control"></td>
+						<td><input type="text" name="username" class="form-control"></td>
 
 					</tr>
 
