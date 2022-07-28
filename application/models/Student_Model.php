@@ -17,10 +17,8 @@
 		}
 
 		public function insert($data){
-
-			$insert_data=json_decode($data);
 			
-			if ($this->db->insert("students_detail",$insert_data)) {
+			if ($this->db->insert("students_detail",$data)) {
 
 				return TRUE;
 

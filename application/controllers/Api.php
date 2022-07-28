@@ -77,17 +77,14 @@ class Api extends CI_Controller{
 				
 			if($query){ 
 
-				$response['data']=$query;
+				$response=$query;
 				echo json_encode($response);
-				// log_message('debug', 'Response Code:'.$httpcode);
-				// die;
+
 			}
 			else{
 
-				$response['message']="failed";
-				$response['status']=http_response_code(404);
+				$response="error";				
 				echo json_encode($response);
-				// die;
 
 			}
 
@@ -97,35 +94,48 @@ class Api extends CI_Controller{
 
 	public function insert(){
 
-		$request=$this->index();
+		$request=$this->index();	
 
 		if($request['status']==200 && $request['request_method']=='POST'){
 
-			$this->form_validation->set_rules('name','Name','required|min_length[5]|max_length[15]|is_unique[students_detail.name]');
-			$this->form_validation->set_rules('class','Class','trim|required|min_length[3]|max_length[5]');
-			
-			if($this->form_validation->run() == TRUE){
+			$data=file_get_contents('php://input');
 
-				$data=json_encode($this->input->post());
+			$data=json_decode($data, true);print_r($data);exit;
+	
+							
+			if($data){
+
 				$query=$this->Student_Model->insert($data);
 
-				if($query){
+				if ($query) {
 
-					log_message('debug', strip_tags(trim('Api - Data Inserted Successfully')));
+					$response=array(
+
+						'status'=>"success",
+						'code'=>http_response_code(200)
+
+					);
+					
+					echo json_encode($response);
+
+				}
+				else{
+
+					$response=array(
+
+						'status'=>"failed",
+						'code'=>http_response_code(500)
+
+					);
+					
+					echo json_encode($response);
 
 				}
 
 			}
-			else{
 
-				log_message('error', 'Api - Insertion Error - '.strip_tags(trim(validation_errors())));
-
-				$this->load->view('Add_Student_View',validation_errors());
-
-			}
-			
 		}
-
+			
 	}
 
 	public function delete(){
