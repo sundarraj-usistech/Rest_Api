@@ -7,40 +7,48 @@
 </head>
 <body>
 
-	<div>
-		
-		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addProjectDetails ">
-			
-			<table>
+	<div class="container mt-5 mb-5">
+
+		<div class="card">
+
+			<div class="card-body">
+
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addProjectDetails " class="form-control">
+					
+					<table class="table table-borderless d-flex justify-content-center project">
+						
+						<tr>
+							
+							<td><label><b>Project Name</b></label></td>
+							<td><input type="text" name="project_name" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Project Description</b></label></td>
+							<td><textarea name="project_description" rows="5" required></textarea></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Project Owner</b></label></td>
+							<td><input type="text" name="project_owner" value="<?php echo $this->session->userdata('user_name'); ?>" disabled readonly></td>
+
+						</tr>
+
+					</table>
+
+					<div class="text-center">
+						
+						<button type="submit" name="create" class="btn btn-primary">ADD</button>
+
+					</div>
+
+				</form>
 				
-				<tr>
-					
-					<td><label>Project Name</label></td>
-					<td><input type="text" name="project_name" required></td>
+			</div>
 
-				</tr>
-				<tr>
-					
-					<td><label>Project Description</label></td>
-					<td><textarea name="project_description" rows="5" cols="21" required></textarea></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Project Owner</label></td>
-					<td><input type="text" name="project_owner" value="<?php echo $this->session->userdata('user_name'); ?>" readonly></td>
-
-				</tr>
-
-			</table>
-
-			<span>
-				
-				<button type="submit" name="create">CREATE</button>
-
-			</span>
-
-		</form>
+		</div>
 
 	</div>
 

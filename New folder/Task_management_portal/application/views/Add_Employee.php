@@ -7,93 +7,101 @@
 </head>
 <body>
 
-	<div>
-		
-		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addEmployeeDetails ">
+	<div class="container mt-5 mb-5">
+
+		<div class="card">
 			
-			<table>
-				
-				<tr>
+			<div class="card-body">
+			
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addEmployeeDetails " class="form-control">
 					
-					<td><label>Employee Name</label></td>
-					<td><input type="text" name="employee_name" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Personal Email</label></td>
-					<td><input type="text" name="personal_email" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Official Email</label></td>
-					<td><input type="text" name="official_email" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Contact Number</label></td>
-					<td><input type="text" name="contact_number" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Date of Birth</label></td>
-					<td><input type="date" name="date_of_birth" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Date of Joining</label></td>
-					<td><input type="date" name="date_of_joining" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Years of Experience</label></td>
-					<td><input type="text" name="years_of_experience" required></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Address</label></td>
-					<td><textarea name="address" rows="5" cols="23" required></textarea></td>
-
-				</tr>
-				<tr>
-					
-					<td><label>Current Designation</label></td>
-					<td>
-
-						<select name="designation" required>
+					<table class="table table-borderless d-flex justify-content-center employee">
 						
-							<option></option>
-							<option value="Junior Software Dveloper">Junior Software Dveloper</option>
-							<option value="Senior Software Dveloper">Senior Software Dveloper</option>
-							<option value="HR Manager">HR Manager</option>
+						<tr>
+							
+							<td><label><b>Employee Name</b></label></td>
+							<td><input type="text" name="employee_name" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Personal Email</b></label></td>
+							<td><input type="text" name="personal_email" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Official Email</b></label></td>
+							<td><input type="text" name="official_email" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Contact Number</b></label></td>
+							<td><input type="text" name="contact_number" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Date of Birth</b></label></td>
+							<td><input type="date" name="date_of_birth" class="date" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Date of Joining</b></label></td>
+							<td><input type="date" name="date_of_joining" class="date" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Years of Experience</b></label></td>
+							<td><input type="text" name="years_of_experience" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Address</b></label></td>
+							<td><textarea name="address" rows="5" required></textarea></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Current Designation</b></label></td>
+							<td>
+
+								<select name="designation" required>
+								
+									<option></option>
+									<option value="Junior Software Dveloper">Junior Software Dveloper</option>
+									<option value="Senior Software Dveloper">Senior Software Dveloper</option>
+									<option value="HR Manager">HR Manager</option>
+								
+								</select>
+
+							</td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Password</b></label></td>
+							<td><input type="text" name="password" required></td>
+
+						</tr>
+
+					</table>
+
+					<div class="text-center">
 						
-						</select>
+						<button type="submit" name="create" class="btn btn-primary">ADD</button>
 
-					</td>
+					</div>
 
-				</tr>
-				<tr>
-					
-					<td><label>Password</label></td>
-					<td><input type="text" name="password" required></td>
+				</form>
 
-				</tr>
+			</div>
 
-			</table>
-
-			<span>
-				
-				<button type="submit" name="create">CREATE</button>
-
-			</span>
-
-		</form>
+		</div>
 
 	</div>
 

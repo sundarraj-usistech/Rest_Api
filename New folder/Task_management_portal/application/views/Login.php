@@ -7,33 +7,46 @@
 </head>
 <body>
 
-	<div>
-		
-		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/login ">
-			
-			<table>
-				<tr>
-					
-					<td><label>Username</label></td>
-					<td><input type="text" name="username" required></td>
+	<div class="container mt-5 mb-5">
 
-				</tr>
-				<tr>
-					
-					<td><label>Password</label></td>
-					<td><input type="password" name="password" required></td>
+		<div class="card">
 
-				</tr>
-
-			</table>
-
-			<span>
+			<div class="card-body">
 				
-				<button type="submit" name="login" class="btn btn-primary">LOGIN</button>
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/login " class="form-control">
+					
+					<table class="table table-borderless d-flex justify-content-center login">
 
-			</span>
+						<tbody>
+							
+							<tr>
+								
+								<td><label><b>Username</b></label></td>
+								<td><input type="text" name="username" required></td>
 
-		</form>
+							</tr>
+							<tr>
+								
+								<td><label><b>Password</b></label></td>
+								<td><input type="password" name="password" required></td>
+
+							</tr>
+
+						</tbody>
+						
+					</table>
+
+					<div class="text-center">
+						
+						<button type="submit" name="login" class="btn btn-success float-center">LOGIN</button>
+
+					</div>
+
+				</form>
+
+			</div>	
+
+		</div>
 
 	</div>
 

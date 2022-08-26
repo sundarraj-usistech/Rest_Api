@@ -7,104 +7,113 @@
 </head>
 <body>
 
-	<div>
-		
-		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails ">
+	<div class="container mt-5 mb-5">
+
+		<div class="card">
+
+			<div class="card-body">
 			
-			<section>
-				
-				<table>
-				
-					<tr>
-						
-						<td><label>Project Name</label></td>
-						<td>
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails " class="form-control">
 
-							<select name="project_name" required>
+				
+					<table class="table table-borderless d-flex justify-content-center task">
 
-								<option></option>
+						<tr>
 							
-								<?php foreach ($project_name as $key ) { ?>	
+							<td><label><b>Project Name</b></label></td>
+							<td>
 
-										<option value="<?php echo $key->project_name; ?>"><?php echo $key->project_name; ?></option>
+								<select name="project_name" required>
 
-								<?php } ?>
+									<option></option>
 								
-							</select>
+									<?php foreach ($project_name as $key ) { ?>	
 
-						</td>
+											<option value="<?php echo $key->project_name; ?>"><?php echo $key->project_name; ?></option>
 
-					</tr>
-					<tr>
-						
-						<td><label>Task Name</label></td>
-						<td><input type="text" name="task_name" required></td>
-
-					</tr>
-					<tr>
-						
-						<td><label>Task Description</label></td>
-						<td><textarea name="task_description" rows="5" cols="21" required></textarea></td>
-
-					</tr>
-					<tr>
-						
-						<td><label>Task Owner</label></td>
-						<td>
-
-							<select name="task_owner" required>
-							
-								<option></option>
-
-								<?php foreach ($employee_name as $key ) { ?>
+									<?php } ?>
 									
-									<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+								</select>
 
-								<?php } ?>
-															
-							</select>
+							</td>
 
-						</td>
+						</tr>
+						<tr>
+							
+							<td><label><b>Task Name</b></label></td>
+							<td><input type="text" name="task_name" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Task Description</b></label></td>
+							<td><textarea name="task_description" rows="5" cols="21" required></textarea></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Task Owner</b></label></td>
+							<td>
+
+								<select name="task_owner" required>
+								
+									<option></option>
+
+									<?php foreach ($employee_name as $key ) { ?>
+										
+										<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+
+									<?php } ?>
+																
+								</select>
+
+							</td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Task Due Date</b></label></td>
+							<td><input type="date" name="task_due_date" class="date" required></td>
+
+						</tr>
+						<tr>
+							
+							<td><label><b>Task Completed Date</b></label></td>
+							<td><input type="date" name="task_completed_date" class="date" required></td>
+
+						</tr>
+
+					</table>
+
+			</div>
+
+		</div>
+		<div class="text-center mt-3 mb-3">
+			
+			<h5>Follow Up</h5>
+
+		</div>
+		<div class="card">
+
+			<div class="card-body">
+
+				<table class="table table-borderless d-flex justify-content-center form-control task">
+
+					<tr>
+						
+						<td><label><b>Follow Up Date</b></label></td>
+						<td><input type="date" name="followup_date" class="date" required></td>
 
 					</tr>
 					<tr>
-						
-						<td><label>Task Due Date</label></td>
-						<td><input type="date" name="task_due_date" required></td>
-
-					</tr>
-					<tr>
-						
-						<td><label>Task Completed Date</label></td>
-						<td><input type="date" name="task_completed_date" required></td>
-
-					</tr>
-
-				</table>
-
-
-			</section>
-			<section>
-				
-				<h4>Follow Up</h4>
-
-				<table>
 					
-					<tr>
-						
-						<td><label>Follow Up Date</label></td>
-						<td><input type="date" name="followup_date" required></td>
-
-					</tr>
-					<tr>
-					
-						<td><label>Follow Up Comments</label></td>
+						<td><label><b>Follow Up Comments</b></label></td>
 						<td><textarea name="followup_comments" rows="5" cols="21" required></textarea></td>
 
 					</tr>
 					<tr>
 					
-						<td><label>Followed Employee</label></td>
+						<td><label><b>Followed Employee</b></label></td>
 						<td>
 
 							<select name="followed_employee" required>
@@ -124,22 +133,24 @@
 					</tr>
 					<tr>
 						
-						<td><label>Color of the Task</label></td>
+						<td><label><b>Color of the Task</b></label></td>
 						<td><input type="color" name="task_colour" required></td>
 
 					</tr>
 
 				</table>
 
-			</section>
+				<div class="text-center">
+					
+					<button type="submit" name="create" class="btn btn-primary">CREATE</button>
 
-			<span>
-				
-				<button type="submit" name="create">CREATE</button>
+				</div>	
 
-			</span>
+			</div>
 			
-		</form>
+		</div>
+
+			</form>
 
 	</div>
 
