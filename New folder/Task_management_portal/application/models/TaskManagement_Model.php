@@ -16,12 +16,21 @@
 
 			if($query){
 
-				return $query['user_role'];
+				if($query['user_password'] == md5($credentials['user_password'])){
+
+					return $query['user_role'];
+
+				}
+				else{
+
+					return FALSE;
+
+				}
 
 			}
 			else{
 
-				exit;
+				return FALSE;
 
 			}
 
@@ -110,9 +119,24 @@
 		public function searchWithKeyword($keyword){
 
 			$this->db->select('task_name, task_description');
-			$this->db->like('task_owner',$keyword);
-			$this->db->or_like('task_due_date', $keyword);
-			$this->db->or_like('task_completed_date', $keyword);
+			$this->db->like('task_project_name',$keyword);
+			$this->db->or_like('task_name', $keyword);
+			$this->db->or_like('task_description', $keyword);
+			$this->db->or_like('task_owner', $keyword);
+			$this->db->or_like('task_followup_comments', $keyword);
+			$this->db->or_like('task_followed_employee', $keyword);
+			$this->db->or_like('task_colour', $keyword);
+			$query = $this->db->get('table_tasks');
+			$result = $query->result();
+
+			return $result;
+
+		}
+
+		public function searchWithDueDate($due_date){
+
+			$this->db->select('task_name, task_description');
+			$this->db->like('task_due_date', $due_date);
 			$query = $this->db->get('table_tasks');
 			$result = $query->result();
 

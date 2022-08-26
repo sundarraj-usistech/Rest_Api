@@ -11,7 +11,7 @@
 
 		<div class="card">
 
-			<div class="card-body">
+			<div class="card-body mt-3">
 				
 				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/login " class="form-control">
 					
@@ -22,13 +22,13 @@
 							<tr>
 								
 								<td><label><b>Username</b></label></td>
-								<td><input type="text" name="username" required></td>
+								<td><input type="email" name="username" class="input-field" placeholder="name@example.com" required></td>
 
 							</tr>
 							<tr>
 								
 								<td><label><b>Password</b></label></td>
-								<td><input type="password" name="password" required></td>
+								<td><input type="password" name="password" class="input-field" required></td>
 
 							</tr>
 

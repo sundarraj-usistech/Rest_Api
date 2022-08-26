@@ -11,7 +11,7 @@
 
 		<div class="card">
 			
-			<div class="card-body">
+			<div class="card-body mt-2">
 			
 				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addEmployeeDetails " class="form-control">
 					
@@ -20,49 +20,49 @@
 						<tr>
 							
 							<td><label><b>Employee Name</b></label></td>
-							<td><input type="text" name="employee_name" required></td>
+							<td><input type="text" name="employee_name" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Personal Email</b></label></td>
-							<td><input type="text" name="personal_email" required></td>
+							<td><input type="email" name="personal_email" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Official Email</b></label></td>
-							<td><input type="text" name="official_email" required></td>
+							<td><input type="email" name="official_email" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Contact Number</b></label></td>
-							<td><input type="text" name="contact_number" required></td>
+							<td><input type="text" name="contact_number" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Date of Birth</b></label></td>
-							<td><input type="date" name="date_of_birth" class="date" required></td>
+							<td><input type="date" name="date_of_birth" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Date of Joining</b></label></td>
-							<td><input type="date" name="date_of_joining" class="date" required></td>
+							<td><input type="date" name="date_of_joining" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Years of Experience</b></label></td>
-							<td><input type="text" name="years_of_experience" required></td>
+							<td><input type="text" name="years_of_experience" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Address</b></label></td>
-							<td><textarea name="address" rows="5" required></textarea></td>
+							<td><textarea name="address" class="input-field" rows="5" required></textarea></td>
 
 						</tr>
 						<tr>
@@ -70,7 +70,7 @@
 							<td><label><b>Current Designation</b></label></td>
 							<td>
 
-								<select name="designation" required>
+								<select name="designation" class="input-field" required>
 								
 									<option></option>
 									<option value="Junior Software Dveloper">Junior Software Dveloper</option>
@@ -85,7 +85,7 @@
 						<tr>
 							
 							<td><label><b>Password</b></label></td>
-							<td><input type="text" name="password" required></td>
+							<td><input type="text" name="password" class="input-field" required></td>
 
 						</tr>
 

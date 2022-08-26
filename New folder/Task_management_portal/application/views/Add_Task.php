@@ -9,12 +9,11 @@
 
 	<div class="container mt-5 mb-5">
 
-		<div class="card">
+		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails " class="form-control">
 
-			<div class="card-body">
-			
-				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails " class="form-control">
+			<div class="card mt-3 mb-3">
 
+				<div class="card-body">
 				
 					<table class="table table-borderless d-flex justify-content-center task">
 
@@ -23,7 +22,7 @@
 							<td><label><b>Project Name</b></label></td>
 							<td>
 
-								<select name="project_name" required>
+								<select name="project_name" class="input-field" required>
 
 									<option></option>
 								
@@ -41,13 +40,13 @@
 						<tr>
 							
 							<td><label><b>Task Name</b></label></td>
-							<td><input type="text" name="task_name" required></td>
+							<td><input type="text" name="task_name" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Task Description</b></label></td>
-							<td><textarea name="task_description" rows="5" cols="21" required></textarea></td>
+							<td><textarea name="task_description" class="input-field" rows="5" cols="21" required></textarea></td>
 
 						</tr>
 						<tr>
@@ -55,7 +54,7 @@
 							<td><label><b>Task Owner</b></label></td>
 							<td>
 
-								<select name="task_owner" required>
+								<select name="task_owner" class="input-field" required>
 								
 									<option></option>
 
@@ -73,13 +72,13 @@
 						<tr>
 							
 							<td><label><b>Task Due Date</b></label></td>
-							<td><input type="date" name="task_due_date" class="date" required></td>
+							<td><input type="date" name="task_due_date" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Task Completed Date</b></label></td>
-							<td><input type="date" name="task_completed_date" class="date" required></td>
+							<td><input type="date" name="task_completed_date" class="input-field" required></td>
 
 						</tr>
 
@@ -88,12 +87,12 @@
 			</div>
 
 		</div>
-		<div class="text-center mt-3 mb-3">
+		<div class="text-center mb-3">
 			
 			<h5>Follow Up</h5>
 
 		</div>
-		<div class="card">
+		<div class="card mb-3">
 
 			<div class="card-body">
 
@@ -102,13 +101,13 @@
 					<tr>
 						
 						<td><label><b>Follow Up Date</b></label></td>
-						<td><input type="date" name="followup_date" class="date" required></td>
+						<td><input type="date" name="followup_date" class="input-field" required></td>
 
 					</tr>
 					<tr>
 					
 						<td><label><b>Follow Up Comments</b></label></td>
-						<td><textarea name="followup_comments" rows="5" cols="21" required></textarea></td>
+						<td><textarea name="followup_comments" class="input-field" rows="5" cols="21" required></textarea></td>
 
 					</tr>
 					<tr>
@@ -116,7 +115,7 @@
 						<td><label><b>Followed Employee</b></label></td>
 						<td>
 
-							<select name="followed_employee" required>
+							<select name="followed_employee" class="input-field" required>
 							
 								<option></option>
 						
@@ -142,7 +141,7 @@
 
 				<div class="text-center">
 					
-					<button type="submit" name="create" class="btn btn-primary">CREATE</button>
+					<button type="submit" name="create" class="btn btn-primary">ADD</button>
 
 				</div>	
 
@@ -150,7 +149,7 @@
 			
 		</div>
 
-			</form>
+		</form>
 
 	</div>
 

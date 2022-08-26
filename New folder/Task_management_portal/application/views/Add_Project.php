@@ -11,7 +11,7 @@
 
 		<div class="card">
 
-			<div class="card-body">
+			<div class="card-body mt-2">
 
 				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addProjectDetails " class="form-control">
 					
@@ -20,19 +20,19 @@
 						<tr>
 							
 							<td><label><b>Project Name</b></label></td>
-							<td><input type="text" name="project_name" required></td>
+							<td><input type="text" name="project_name" class="input-field" required></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Project Description</b></label></td>
-							<td><textarea name="project_description" rows="5" required></textarea></td>
+							<td><textarea name="project_description" rows="5" class="input-field" required></textarea></td>
 
 						</tr>
 						<tr>
 							
 							<td><label><b>Project Owner</b></label></td>
-							<td><input type="text" name="project_owner" value="<?php echo $this->session->userdata('user_name'); ?>" disabled readonly></td>
+							<td><input type="text" name="project_owner" value="<?php echo $this->session->userdata('user_name'); ?>" class="input-field" readonly></td>
 
 						</tr>
 

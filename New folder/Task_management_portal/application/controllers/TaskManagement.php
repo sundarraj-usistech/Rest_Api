@@ -19,7 +19,7 @@
 
 			if ($this->session->userdata('user_role') && $this->session->userdata('user_name')) {
 				
-				$this->dashboard();
+				return TRUE;
 
 			}
 			else{
@@ -43,16 +43,25 @@
 
 			$user_role = $this->TaskManagement_Model->login($credentials);
 
-			$session_data = array(
-
-				'user_name' => $data['username'],
-				'user_role' => $user_role
-
-			);
-
-			$this->session->set_userdata($session_data);
+			if ($user_role) {
 				
-			redirect(base_url()."TaskManagement/dashboard");
+				$session_data = array(
+
+					'user_name' => $data['username'],
+					'user_role' => $user_role
+
+				);
+
+				$this->session->set_userdata($session_data);
+					
+				redirect(base_url()."TaskManagement/dashboard");
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 
@@ -68,7 +77,16 @@
 
 		public function addEmployee(){
 
-			$this->load->view('Add_Employee');
+			if ($this->index()) {
+			
+				$this->load->view('Add_Employee');
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 
@@ -87,7 +105,7 @@
 				'employee_years_of_experience' => $data['years_of_experience'],
 				'employee_address' => $data['address'],
 				'employee_designation' => $data['designation'],
-				'employee_password' => $data['password']
+				'employee_password' => md5($data['password'])
 
 			);
 
@@ -95,7 +113,7 @@
 
 			if ($this->TaskManagement_Model->addEmployeeLogin($user_details)) {
 				
-				echo "Employee Created Succesfully";
+				redirect(base_url()."TaskManagement/dashboard");
 
 			}
 
@@ -103,7 +121,16 @@
 
 		public function addProject(){
 
-			$this->load->view('Add_Project');
+			if ($this->index()) {
+				
+				$this->load->view('Add_Project');
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 
@@ -121,7 +148,7 @@
 
 			if ($this->TaskManagement_Model->addProjectDetails($project_details)) {
 				
-				echo "Project Created Succesfully";
+				redirect(base_url()."TaskManagement/dashboard");
 
 			}
 
@@ -129,14 +156,23 @@
 
 		public function addTask(){
 
-			$array = array(
+			if ($this->index()) {
+				
+				$array = array(
 
-				'project_name' => $this->TaskManagement_Model->getProjectName(),
-				'employee_name' => $this->TaskManagement_Model->getEmployeeName()
+					'project_name' => $this->TaskManagement_Model->getProjectName(),
+					'employee_name' => $this->TaskManagement_Model->getEmployeeName()
 
-			);
+				);
 
-			$this->load->view('Add_Task', $array);
+				$this->load->view('Add_Task', $array);
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 
@@ -161,7 +197,7 @@
 
 			if ($this->TaskManagement_Model->addTaskDetails($task_details)) {
 				
-				echo "Task Created Succesfully";
+				redirect(base_url()."TaskManagement/dashboard");
 
 			}
 
@@ -169,26 +205,67 @@
 
 		public function dashboard(){
 
-			$array = array(
+			if ($this->index()) {
+				
+				$array = array(
 
-				'task_details' => $this->TaskManagement_Model->getTaskDetails()
-			);
+					'task_details' => $this->TaskManagement_Model->getTaskDetails()
+				);
 
-			$this->load->view('Dashboard', $array);
+				$this->load->view('Dashboard', $array);
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 
 		public function searchWithKeyword(){
 
-			$keyword = $this->input->post('search_with_keyword'); 
+			if ($this->index()) {
+				
+				$keyword = $this->input->post('search_with_keyword'); 
 
-			$data = array(
+				$data = array(
 
-				'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword)
+					'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword)
 
-			);
+				);
 
-			$this->load->view('Dashboard', $data);
+				$this->load->view('Dashboard', $data);
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
+
+		}
+
+		public function searchWithDueDate(){
+
+			if ($this->index()) {
+				
+				$due_date = $this->input->post('search_with_due_date');
+
+				$data = array(
+
+					'task_details' => $this->TaskManagement_Model->searchWithDueDate($due_date)
+
+				);
+
+				$this->load->view('Dashboard', $data);
+
+			}
+			else{
+
+				redirect(base_url()."TaskManagement");
+
+			}
 
 		}
 

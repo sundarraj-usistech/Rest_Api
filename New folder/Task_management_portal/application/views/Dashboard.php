@@ -38,11 +38,23 @@
 
 			<?php } ?>
 
+			<span>
+				
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/searchWithDueDate " class="form-control">
+					
+					<label>Enter the Due-Date</label>
+					<input type="date" name="search_with_due_date" required>
+					<button type="submit" name="search" class="btn btn-primary">SEARCH</button>
+
+				</form>
+
+			</span>
+
 			<span>		
 				
 				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/searchWithKeyword " class="form-control">
 					
-					<input type="text" name="search_with_keyword">
+					<input type="text" name="search_with_keyword" placeholder="Enter the Keyword">
 
 					<button type="submit" name="search" class="btn btn-primary">SEARCH</button>
 
