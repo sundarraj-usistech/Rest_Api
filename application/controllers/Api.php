@@ -71,7 +71,7 @@ class Api extends CI_Controller{
 
 		$request=$this->index();
 
-		if($request['status']==200 && $request['request_method']=='POST'){
+		if($request['status']==200 && $request['request_method']=='GET'){
 
 			$query=$this->Student_Model->display();
 				
